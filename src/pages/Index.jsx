@@ -80,19 +80,19 @@ function Index() {
         
             <AboutMe className="about-me" id="about">
                 <h2 className="section-title title-about">Who I am</h2>
-                <p className="section-subtitle subtitle-about"></p>
+                <p className="section-subtitle subtitle-about">Designer & developer based out of NYC</p>
 
                 <div className="about-me-body">
-                    <p></p>
-                    <p></p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
                 
                 <img src={jane_02} alt="Jane leaning against a bus" />
             </AboutMe>
         
             <MyWork id="work">
-                <h2 className="section-title">My work</h2>
-                <p className="section-subtitle"></p>
+                <h2 className="section-title title-work">My work</h2>
+                <p className="section-subtitle subtitle-work">A selection of my range of work</p>
                 
                 <div className="portfolio">
                     <a href="#" className="portfolio-item">
@@ -129,7 +129,7 @@ function Index() {
             </MyWork>
 
             <Footer>
-                <Link to="mailto:hello@jane.dev" class="footer__link">hello@jane.dev</Link>
+                <Link to="mailto:hello@jane.dev" className="footer-link">hello@jane.dev</Link>
                 <ul className="social-list">
                     <li className="social-list-item">
                         <Link className="social-list-link" to="https://codepen.io">a</Link>
