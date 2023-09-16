@@ -26,6 +26,10 @@ const GlobalStyle = createGlobalStyle`
             0.125em 0.125em 0.25em rgba(0,0,0,.15);
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         background: var(--clr-light);
         color: var(--clr-dark);
@@ -42,10 +46,10 @@ const GlobalStyle = createGlobalStyle`
 
     strong { font-weight: var(--fw-bold) }
 
-    &:focus {
+    /* &:focus {
         outline: 3px solid var(--clr-accent);
         outline-offset: 3px;
-    }
+    } */
 
     .btn {
         display: inline-block;
@@ -95,6 +99,5 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-size: var(--fs-h3);
     }
-
 `
 export default GlobalStyle

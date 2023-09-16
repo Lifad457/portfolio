@@ -1,10 +1,110 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import servicesBG from '../assets/services-bg.jpg'
 
 export const Header = styled.header`
-    nav {
-        display: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    
+    .logo {
+        max-width: 100px;
     }
+
+    .nav {
+        position: fixed;
+        background: var(--clr-dark);
+        color: var(--clr-light);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+
+        transform: translateX(100%);
+        transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+    }
+
+    .nav-list {
+        list-style: none;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-link {
+        color: inherit;
+        font-weight: var(--fw-bold);
+        font-size: var(--fs-h2);
+        text-decoration: none;
+    }
+
+    .nav-link:hover {
+        color: var(--clr-accent);
+    }
+
+    .nav-toggle {
+        padding: .5em;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        z-index: 1000;
+    }
+
+    .hamburger {
+        display: block;
+        position: relative;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        background: var(--clr-accent);
+        width: 2em;
+        height: 3px;
+        border-radius: 1em;
+        transition: transform 250ms ease-in-out;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+    .hamburger::before { top: 6px; }
+    .hamburger::after { bottom: 6px; }
+
+
+    ${props => props.$menu && css`
+        .nav-toggle {
+            position: fixed;
+        }
+
+        .nav {
+            transform: translateX(0);
+        }
+
+        .hamburger {
+            transform: rotate(.625turn);
+        }
+
+        .hamburger::before {
+            transform: rotate(90deg) translateX(-6px);
+        }
+
+        .hamburger::after {
+            opacity: 0;
+        }
+    `};
 `
 export const Intro = styled.section`
     position: relative;
@@ -186,5 +286,54 @@ export const MyWork = styled.section`
     }
 `
 export const Footer = styled.footer`
+    background: #111;
+    color: var(--clr-accent);
+    text-align: center;
+    padding: 2.5em 0;
+    font-size: var(--fs-h3);
 
+    a { 
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .footer-link {
+        font-weight: var(--fw-bold);
+    }
+
+    .footer-link:hover,
+    .social-list-link:hover {
+        opacity: .7;
+    }
+
+    .footer-link:hover {
+        text-decoration: underline;
+    }
+
+    .social-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 2em 0 0;
+        padding: 0;
+    }
+
+    .social-list-item {
+        margin: 0 .5em;
+    }
+
+    .social-list-link {
+        padding: .5em;
+    }
+`
+export const PortfolioItemIndividual = styled.div`
+    padding: 0 2em 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    p {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 `

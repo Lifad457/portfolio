@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { 
     Header,
     MyServices,
@@ -19,30 +19,71 @@ import portfolio7 from "../assets/portfolio-07.jpg"
 import portfolio8 from "../assets/portfolio-08.jpg"
 import portfolio9 from "../assets/portfolio-09.jpg"
 import portfolio10 from "../assets/portfolio-10.jpg"
+import { useState, useEffect } from "react"
 
 function Index() {
+    const [menu, setMenu] = useState(false);
+
+    const { pathname, hash, key } = useLocation();
+    useEffect(() => {
+        // if not a hash link, scroll to top
+        if (hash === '') {
+            window.scrollTo(0, 0);
+        }
+        // else scroll to id
+        else {
+            setTimeout(() => {
+                const id = hash.replace('#', '');
+                const element = document.getElementById(id);
+                    if (element) {
+                        element.scrollIntoView();
+                    }
+                } 
+            , 0);
+        }
+    }, [pathname, hash, key]); // do this on route change
+
     return (
         <>
-            <Header>
+            <Header $menu={menu}>
                 <div className="logo">
                     <img src={logo} alt="" />
                 </div>
-                <button className="nav-toggle" aria-label="toggle navigation">
+                <button className="nav-toggle" 
+                    aria-label="toggle navigation" 
+                    onClick={() => setMenu(!menu)} 
+                >
                     <span className="hamburger"></span>
                 </button>
                 <nav className="nav">
                     <ul className="nav-list">
                         <li className="nav-item">
-                            <Link to={{pathname: '.', hash: '#home'}} className="nav-link">Home</Link>
+                            <Link to='#home'
+                            className="nav-link" 
+                            onClick={() => setMenu(false)} >
+                                Home
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={{pathname: '.', hash: '#services'}} className="nav-link">My Services</Link>
+                            <Link to='#services' 
+                            className="nav-link" 
+                            onClick={() => setMenu(false)} >
+                                My Services
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={{pathname: '.', hash: '#about'}} className="nav-link">About me</Link>
+                            <Link to='#about'
+                            className="nav-link" 
+                            onClick={() => setMenu(false)} >
+                                About me
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={{pathname: '.', hash: '#work'}} className="nav-link">My Work</Link>
+                            <Link to='#work'
+                            className="nav-link" 
+                            onClick={() => setMenu(false)} >
+                                My Work
+                            </Link>
                         </li>
                     </ul>
                 </nav>
@@ -75,7 +116,9 @@ function Index() {
                     </div> 
                 </div> 
                 
-                <Link to={{pathname: '.', hash: '#work'}} className="btn">My Work</Link>
+                <Link to='#work' reloadDocument 
+                    className="btn">My Work
+                </Link>         
             </MyServices>
         
             <AboutMe className="about-me" id="about">
@@ -95,36 +138,36 @@ function Index() {
                 <p className="section-subtitle subtitle-work">A selection of my range of work</p>
                 
                 <div className="portfolio">
-                    <a href="#" className="portfolio-item">
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio1} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio2} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio3} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio4} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio5} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio6} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio7} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio8} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio9} alt="" className="portfolio-img" />
-                    </a>
-                    <a href="#" className="portfolio-item">
+                    </Link>
+                    <Link to="my-work" className="portfolio-item">
                         <img src={portfolio10} alt="" className="portfolio-img" />
-                    </a>
+                    </Link>
                 </div>
             </MyWork>
 
@@ -132,16 +175,24 @@ function Index() {
                 <Link to="mailto:hello@jane.dev" className="footer-link">hello@jane.dev</Link>
                 <ul className="social-list">
                     <li className="social-list-item">
-                        <Link className="social-list-link" to="https://codepen.io">a</Link>
+                        <Link className="social-list-link" to="https://codepen.io">
+                            <i className="fab fa-codepen"></i>
+                        </Link>
                     </li>
                     <li className="social-list-item">
-                        <Link className="social-list-link" to="http://dribbble.com">b</Link>
+                        <Link className="social-list-link" to="http://dribbble.com">
+                            <i className="fab fa-dribbble"></i>
+                        </Link>
                     </li>
                     <li className="social-list-item">
-                        <Link className="social-list-link" to="https://twitter.com">c</Link>
+                        <Link className="social-list-link" to="https://twitter.com">
+                            <i className="fab fa-twitter"></i>
+                        </Link>
                     </li>
                     <li className="social-list-item">
-                        <Link className="social-list-link" to="https://github.com">d</Link>
+                        <Link className="social-list-link" to="https://github.com">
+                            <i className="fab fa-github"></i>
+                        </Link>
                     </li>
                 </ul>
             </Footer>

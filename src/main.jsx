@@ -9,10 +9,12 @@ import {
 import Index from './pages/Index'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
+import PortfolioItem from './pages/PortfolioItem'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />} >
     <Route index element={<Index />} />
+    <Route path='my-work' element={<PortfolioItem />} />
 
     <Route path='*' element={<NotFound />} />
   </Route>
